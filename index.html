@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            border: 1px solid black;
+            height: 300px;
+            width: 500px;
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Capitalize</h1>
+        <input type="text" placeholder="enter sentence" id="input">
+        <button id="btn">Capitalize</button>
+        <button id="reverse">Reverse</button>
+        <button id="reverseword">Reverse word by word</button>
+        <div id="output">
+    </div>
+        
+
+    </div>
+    <script>
+        let input = document.getElementById("input");
+        let btn = document.getElementById("btn");
+        let output = document.getElementById("output");
+        let reverse = document.getElementById("reverse");
+        let reverseword = document.getElementById("reverseword");
+
+        btn.addEventListener("click", () => {
+            let inputValue = input.value;
+            let res = capitalize(inputValue);
+            output.innerHTML = `<h2>${res}</h2>`;
+        });
+
+        reverse.addEventListener("click", () => {
+            let inputValue = input.value;
+            let res = reverseIt(inputValue);
+            output.innerHTML = `<h2>${res}</h2>`;
+        });
+
+        reverseword.addEventListener("click", () => {
+            let inputValue = input.value;
+            let res = reverseWords(inputValue);
+            output.innerHTML = `<h2>${res}</h2>`;
+        });
+
+        function capitalize(str) {
+            let s = '';
+            for (let i=0; i<str.length; i++){
+                if (i==0 || str[i-1]==' '){
+                    s = s + str[i].toUpperCase();
+                } 
+                else{
+                    s = s + str[i];
+                }
+            }
+            return s;
+        }
+
+        function reverseIt(str){
+            let arr = str.split("");
+            arr.reverse();
+            return arr.join("");
+        }
+
+        function reverseWords(string){
+            let arr = string.split(' ');
+            arr.reverse();
+            return arr.join(' ');
+        }
+    </script>
+</body>
+</html>
